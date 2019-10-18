@@ -75,7 +75,8 @@ class DenseNet121(nn.Module):
 
 model = DenseNet121(8).cuda()
 model = torch.nn.DataParallel(model)
-model.load_state_dict(torch.load("model/DenseNet121_aug4_pretrain_WeightBelow1_1_0.829766922537.pkl"))
+#model.load_state_dict(torch.load("model/DenseNet121_aug4_pretrain_WeightBelow1_1_0.829766922537.pkl"))
+model.load_state_dict(torch.load("DenseNet121_aug4_pretrain_noWeight_1_0.5278846309492027.pkl"))
 print("model loaded")
 
 
@@ -216,7 +217,7 @@ for index in range(len(test_dataset)):
     activate_classes = np.where((probs > thresholds)[0]==True)[0] # get the activated class
     for activate_class in activate_classes:
         gcam.backward(idx=activate_class)
-        output = gcam.generate(target_layer="module.densenet121.features.denseblock4.denselayer16.conv.2")
+        output = gcam.generate(target_layer="module.densenet121.features.denseblock4.denselayer16.conv2") # bug
         #### this output is heatmap ####
         if np.sum(np.isnan(output)) > 0:
             print("fxxx nan")

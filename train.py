@@ -143,7 +143,7 @@ if __name__ == '__main__':
 
 	optimizer = optim.Adam(model.parameters(),lr=0.0002, betas=(0.9, 0.999))
 	total_length = len(augment_img)
-	for epoch in range(10):  # loop over the dataset multiple times
+	for epoch in range(1):  # loop over the dataset multiple times
 		print("Epoch:",epoch)
 		running_loss = 0.0
 

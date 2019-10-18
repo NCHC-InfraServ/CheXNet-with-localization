@@ -7,6 +7,8 @@ import skimage.transform
 import pickle
 import sys, os
 from sklearn.preprocessing import MultiLabelBinarizer
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 image_folder_path = sys.argv[1] # folder contain all images
 data_entry_path = sys.argv[2] 
